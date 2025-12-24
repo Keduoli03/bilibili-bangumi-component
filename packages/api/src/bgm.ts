@@ -6,6 +6,7 @@ const subjectTypeMap: Record<SubjectType, string> = {
   1: '2', // 动画
   2: '4', // 游戏
   3: '1', // 书籍
+  4: '6', // 电视剧
 }
 
 const collectionTypeMap = {

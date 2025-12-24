@@ -1,6 +1,5 @@
 import { Component, Prop, State, h } from '@stencil/core'
 import type { Collection, CollectionLabel, ContainerState, Platform, ResponseData, Subject } from '../shared/types'
-import type { UnionToTuple } from '../shared/typeUtils'
 import type { BilibiliParams } from '../shared/api'
 import { getBangumi, getBilibili, getCustom } from '../shared/api'
 import { thorttle } from '../shared/utils'
@@ -33,10 +32,10 @@ export class BilibiliBangumi {
   @State() pageNumber = 1
   @State() responseData: ResponseData
 
-  platformLabels: Platform[] = ['Bilibili', 'Bangumi']
-  @State() activePlatform: Platform = 'Bilibili'
+  platformLabels: Platform[] = ['Bangumi', 'Bilibili']
+  @State() activePlatform: Platform = 'Bangumi'
 
-  subjectLabels: UnionToTuple<Subject> = ['动画', '游戏', '书籍']
+  subjectLabels: Subject[] = ['动画', '电视剧', '游戏', '书籍']
   @State() activeSubject: Subject = '动画'
 
   @State() collectionLabels: CollectionLabel = ['全部', '想看', '在看', '看过']
@@ -49,7 +48,7 @@ export class BilibiliBangumi {
     const platformLabels = [...this.platformLabels]
     if (this.customEnabled)
       platformLabels.push(this.customLabel)
-    const filterArr = [this.bilibiliEnabled, this.bgmEnabled, this.customEnabled]
+    const filterArr = [this.bgmEnabled, this.bilibiliEnabled, this.customEnabled]
     this.platformLabels = platformLabels.filter((_, index) => filterArr[index])
     this.activePlatform = this.platformLabels[0]
     this.fetchData()

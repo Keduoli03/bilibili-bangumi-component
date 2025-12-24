@@ -5,6 +5,7 @@ export interface CustomData {
   anime?: CollectionData
   game?: CollectionData
   book?: CollectionData
+  real?: CollectionData
 }
 
 /**
@@ -20,6 +21,7 @@ const customSubjectMap: Record<SubjectType, keyof CustomData> = {
   1: 'anime',
   2: 'game',
   3: 'book',
+  4: 'real',
 }
 
 const customCollectionMap: Record<string, keyof CollectionData> = {

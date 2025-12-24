@@ -1,8 +1,9 @@
 import path from 'node:path'
 import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'tsup'
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname)
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const biliBgmMock = readFileSync(path.resolve(__dirname, './src/mock/bili-bgm.js'), 'utf-8')
 const customMock = readFileSync(path.resolve(__dirname, './src/mock/custom.js'), 'utf-8')
